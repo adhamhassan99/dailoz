@@ -9,9 +9,11 @@ const ListItem = () => {
         padding: 20,
         width: '90%',
         alignItems: 'center',
-        marginVertical: 10,
-        // borderWidth: 1,
-        elevation: 1,
+        marginVertical: 13,
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
       }}>
       <Text>ListItem</Text>
     </View>

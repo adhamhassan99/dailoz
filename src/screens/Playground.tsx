@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {View, Text, Button, Pressable} from 'react-native';
+import {View, Text, Button, Pressable, ScrollView} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Animated, {
   useAnimatedStyle,
@@ -23,16 +23,23 @@ const Playground = (props: Props) => {
       height: height.value,
       overflow: 'hidden',
       alignItems: 'center',
+      borderBottomEndRadius: 10,
+      borderBottomLeftRadius: 10,
+      position: 'absolute',
+      top: 55,
+      left: 0,
+      right: 0,
+      zIndex: 100,
     };
   });
 
   useEffect(() => {
     horizontalMargin.value = withSequence(withTiming(!sheetOpen ? 30 : 0));
-    height.value = withSpring(!sheetOpen ? 30 : 350, {
-      stiffness: 20,
-      damping: 10,
+    height.value = withSpring(!sheetOpen ? 30 : 355, {
+      stiffness: 200,
+      damping: 150,
     });
-  }, [sheetOpen]);
+  }, [height, horizontalMargin, sheetOpen]);
 
   const toggleSheet = () => {
     if (sheetOpen) {
@@ -44,27 +51,113 @@ const Playground = (props: Props) => {
   return (
     <View style={{flex: 1, backgroundColor: 'lightgrey'}}>
       <Text>Playground</Text>
-      <Pressable onPress={toggleSheet}>
-        <View
-          style={{
-            backgroundColor: 'white',
-            paddingVertical: 20,
-            alignItems: 'center',
-            marginHorizontal: 20,
-            elevation: 5,
-          }}>
-          <Text>main content</Text>
-        </View>
-      </Pressable>
-      <Animated.View style={[animatedStyles]}>
-        <ListItem />
-        <ListItem />
-        <ListItem />
-        <ListItem />
-      </Animated.View>
-      <View style={{marginTop: 'auto'}}>
-        <Button title="close" onPress={() => setSheetOpen(false)} />
-      </View>
+      <ScrollView
+        scrollEnabled={!sheetOpen}
+        onScroll={() => setSheetOpen(false)}
+        style={{backgroundColor: 'red'}}>
+        <Pressable onPress={toggleSheet}>
+          <View
+            style={{
+              backgroundColor: 'white',
+              paddingVertical: 20,
+              alignItems: 'center',
+              marginHorizontal: 20,
+              elevation: 5,
+            }}>
+            <Text>main content</Text>
+          </View>
+        </Pressable>
+        <Animated.View style={[animatedStyles]}>
+          <ListItem />
+          <ListItem />
+          <ListItem />
+          <ListItem />
+          <Pressable onPress={() => setSheetOpen(false)}>
+            <View
+              style={{
+                height: 5,
+                width: 40,
+                backgroundColor: 'lightgrey',
+                borderRadius: 10,
+              }}
+            />
+          </Pressable>
+        </Animated.View>
+        <Pressable onPress={() => setSheetOpen(false)}>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+          <Text>a</Text>
+        </Pressable>
+      </ScrollView>
     </View>
   );
 };
